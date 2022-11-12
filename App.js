@@ -9,6 +9,8 @@ import Register from './components/Register';
 
 
 export default function App() {
+  const Stack = createNativeStackNavigator();
+  
   return (
     <NavigationContainer>
       <StackActions.Navigator
