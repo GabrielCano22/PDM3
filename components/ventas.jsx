@@ -13,7 +13,12 @@ export default function ventas ({navigation,route}) {
     }
     let objt = new Helpers();
     let data = []
-    async () => { data = await objt.getVentasUser(id);}
+    if(id != null){
+        async () => { data = await objt.getVentasUser(id);}
+    }else {
+        async () => { data = await objt.getVentas()}
+    }
+    
 
     return(
         <FlatList
