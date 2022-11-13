@@ -19,13 +19,9 @@ export class Helpers {
     async getUsers () {
         try{ 
             const response  = await axios.get(`http://${PORT}:3000/api/users`)
-                            .then(data => { data})
-                            .then(json => { return json})
-             
-            
-             
+                    return response.data
         }catch (error){
-            console.log(error)
+            console.log(error.message)
         }
     };
     
@@ -34,12 +30,17 @@ export class Helpers {
             const response = await axios.get(`localhost:3000/api/user/${id}`)
             return response.data;
         }catch (error){
-            console.log(error)
+            console.log(error.message)
         }
     };
-    async getUsersV(){
+    async getUsersv(){
         try{
-            const response = await axios.get(`http://${PORT}:3000/api/users/${false}`)
+            
+            const response = await axios.get(`http://${PORT}:3000/api/usersv/${false}`)
+            return response.data
+
+        }catch(error){
+            console.log(error.message)
         }
     }
     async updateUser (id,data){
