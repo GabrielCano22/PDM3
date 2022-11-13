@@ -34,8 +34,8 @@ export default function Register({navigation}){
         }}
         render={({field:{onChange,onBlur,value}})=>(
           <TextInput
-          style={[styles.inputs,{borderColor:errors.idvend?.type == "required"||errors.fullname?.type == "maxLength"
-          ||errors.fullname?.type == "minLength"||errors.fullname?.type == "pattern"?'red':'green'}]}
+          style={[styles.inputs,{borderColor:errors.idvend?.type == "required"||errors.idvend?.type == "maxLength"
+          ||errors.idvend?.type == "minLength"||errors.idvend?.type == "pattern"?'red':'green'}]}
           placeholder="identificacion"
           onChange={onChange}
           onBlur={onBlur}
@@ -45,10 +45,10 @@ export default function Register({navigation}){
         )}
         name='idvend'
       />
-      {errors.fullname?.type=='required'&&<Text style={{color:'red'}}> La identificacion es obligatoria</Text>}
-      {errors.fullname?.type=='maxLength'&&<Text style={{color:'red'}}> La identificacion debe tener 12 numeros</Text>}
-      {errors.fullname?.type=='minLength'&&<Text style={{color:'red'}}> La identificacion debe tener minimo 8 numeros</Text>}
-      {errors.fullname?.type=='pattern'&&<Text style={{color:'red'}}> La identificacion solo puede contener numeros</Text>}
+      {errors.idvend?.type=='required'&&<Text style={{color:'red'}}> La identificacion es obligatoria</Text>}
+      {errors.idvend?.type=='maxLength'&&<Text style={{color:'red'}}> La identificacion debe tener 12 numeros</Text>}
+      {errors.idvend?.type=='minLength'&&<Text style={{color:'red'}}> La identificacion debe tener minimo 8 numeros</Text>}
+      {errors.idvend?.type=='pattern'&&<Text style={{color:'red'}}> La identificacion solo puede contener numeros</Text>}
       
       <Controller
         control={control}
@@ -60,8 +60,8 @@ export default function Register({navigation}){
         }}
         render={({field:{onChange,onBlur,value}})=>(
           <TextInput
-          style={[styles.inputs,{borderColor:errors.username?.type == "required"||errors.username?.type == "maxLength"
-          ||errors.username?.type == "minLength"||errors.username?.type == "pattern"?'red':'green'}]}
+          style={[styles.inputs,{borderColor:errors.nombre?.type == "required"||errors.nombre?.type == "maxLength"
+          ||errors.nombre?.type == "minLength"||errors.nombre?.type == "pattern"?'red':'green'}]}
           placeholder="nombre "
           onChange={onChange}
           onBlur={onBlur}
@@ -70,10 +70,10 @@ export default function Register({navigation}){
         )}
         name='nombre'
       />
-      {errors.username?.type=='required'&&<Text style={{color:'red'}}> El Nombre es obligatorio</Text>}
-      {errors.username?.type=='maxLength'&&<Text style={{color:'red'}}> El Nombre debe tener almenos 30 chars</Text>}
-      {errors.username?.type=='minLength'&&<Text style={{color:'red'}}> El Nombre debe tener minimo 8 chars</Text>}
-      {errors.username?.type=='pattern'&&<Text style={{color:'red'}}> El Nombre debe tener solo letras y espacios</Text>}
+      {errors.nombre?.type=='required'&&<Text style={{color:'red'}}> El Nombre es obligatorio</Text>}
+      {errors.nombre?.type=='maxLength'&&<Text style={{color:'red'}}> El Nombre debe tener almenos 30 chars</Text>}
+      {errors.nombre?.type=='minLength'&&<Text style={{color:'red'}}> El Nombre debe tener minimo 8 chars</Text>}
+      {errors.nombre?.type=='pattern'&&<Text style={{color:'red'}}> El Nombre debe tener solo letras y espacios</Text>}
 
 <Controller
         control={control}
@@ -85,8 +85,8 @@ export default function Register({navigation}){
         }}
         render={({field:{onChange,onBlur,value}})=>(
           <TextInput
-          style={[styles.inputs,{borderColor:errors.password?.type == "required"||errors.password?.type == "maxLength"
-          ||errors.password?.type == "minLength"||errors.password?.type == "pattern"?'red':'green'}]}
+          style={[styles.inputs,{borderColor:errors.correo?.type == "required"||errors.correo?.type == "maxLength"
+          ||errors.correo?.type == "minLength"||errors.correo?.type == "pattern"?'red':'green'}]}
           placeholder="contraseña"
           onChange={onChange}
           onBlur={onBlur}
@@ -96,10 +96,10 @@ export default function Register({navigation}){
         name='correo'
       />
 
-    {errors.password?.type=='required'&&<Text style={{color:'red'}}>El correo es obligatorio</Text>}
-    {errors.password?.type=='pattern'&&<Text style={{color:'red'}}>El correo de tener @ y dominio finalizado en .com</Text>}
-    {errors.password?.type=='maxLength'&&<Text style={{color:'red'}}>debe tener maximo 50 caracteres</Text>}
-    {errors.password?.type=='minLength'&&<Text style={{color:'red'}}>debe tener minimo 15 caracteres</Text>}
+    {errors.correo?.type=='required'&&<Text style={{color:'red'}}>El correo es obligatorio</Text>}
+    {errors.correo?.type=='pattern'&&<Text style={{color:'red'}}>El correo de tener @ y dominio finalizado en .com</Text>}
+    {errors.correo?.type=='maxLength'&&<Text style={{color:'red'}}>debe tener maximo 50 caracteres</Text>}
+    {errors.correo?.type=='minLength'&&<Text style={{color:'red'}}>debe tener minimo 15 caracteres</Text>}
      
     <View style={{flexDirection:'row',marginTop:20,marginBottom:20}}>
   
