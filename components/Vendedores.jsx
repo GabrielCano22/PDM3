@@ -4,6 +4,9 @@ import Textrows from './Textrows';
 
 export default function Vendedores ({navigation}){
     const objt = new Helpers();
+
+    const data = objt.getUsers();
+=======
     const data = []
      async () => data = await objt.getUsersv();
 

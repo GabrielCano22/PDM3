@@ -1,39 +1,68 @@
-import { Text,View,TextInput,FlatList } from 'react-native';
+import { Text,View,TextInput,FlatList,Picker } from 'react-native';
 import axios from 'axios'; // Es un consumidor de apis
 import {useForm,Controller} from 'react-hook-form';
+import { useState } from 'react';
+import userv from './Homev.jsx'
+import {helper, Helpers} from '../helpers/Helpers.js'
 
 export default function RegistroVenta(){
+    const [valorZona, setValorZona] = useState('')
 
     const {register,control,handleSubmit,formState:{errors}}=useForm({
         defaultValues:{
-            zona:'',
             valorVenta:''
         }
         
     })
 
-    const zonas = [
-        {
-            zona:'Sur',
-            valor:0.03
-        },
-        {
-            zona:'Norte',
-            valor:0.03
+    const calcularComision = (valZona,valVenta) => {
+        let comision = 0
+        let porcentaje = 0
+        if(valZona === ''){
+            alert("Debe seleccionar la zona de la venta")
         }
-    ]
+        if(valZona === 'sur'){
+            porcentaje = 0.03 
+        }
+        else if(valZona === 'norte') {
+            porcentaje = 0.02
+        }
+        return comision = porcentaje * valVenta
+    }
 
     const registrarVenta = () => {
         let fecha = new Date()
+        const venta = {
+            idvend:userv.idvend,
+            zona:valorZona,
+            fecha:fecha.toDateString(),
+            ValorVenta:valorVenta,
+            comision:calcularComision(valorZona,valorVenta)
+        }
+
+        const vendedor = {
+            idvend:userv.idvend,
+            nombre:userv.nombre,
+            correo:userv.correo,
+            rol:userv.rol,
+            totalcomision:userv.totalcomision += venta.comision
+        }
+
+        let ayuda = new Helpers()
+        ayuda.saveVenta(venta)
+        ayuda.updateUser(userv.idvend,vendedor)
     }
 
     return(
         <View>
-            <FlatList
-                data={zonas}
-                renderItem={renderItem}
-                keyExtractor={({ zona }, index) => zona}
-            />
+            <Picker
+                selectedValue={valorZona}
+                onValueChange={(itemValue, itemIndex) => setValorZona(itemValue)}
+            >
+                <Picker.Item label="Seleccione la zona" value="" />
+                <Picker.Item label="Sur" value="sur" />
+                <Picker.Item label="Norte" value="norte" />
+            </Picker>
 
            <Controller
                 control={control}

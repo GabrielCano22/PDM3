@@ -9,6 +9,7 @@ function Homev ({navigation,route}){
         nombre: route.params.nombre,
         idvend:route.params.idvend,
         rol:route.params.rol,
+        correo:route.params.correo,
         totalcomision:route.params.totalcomision
     }
     return(
