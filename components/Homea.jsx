@@ -9,6 +9,7 @@ function Homea ({navigation,rout}){
     usera = {
         nombre:rout.params.nombre,
         idvend:rout.params.idvend,
+        correo:rout.params.correo,
         rol:rout.params.rol
     }
     

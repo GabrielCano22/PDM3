@@ -19,7 +19,7 @@ function Homev ({navigation,route}){
                 headerShown: false
             })}
             >
-                <TabScreen name = "Profile" component = {Profile} options = {{
+                <Tab.Screen name = "Profile" component = {Profile} options = {{
                     title: "Cuenta",
                     tabBarActiveTintColor:'green',
                     tabBarIcon:({focused}) => (
@@ -27,7 +27,7 @@ function Homev ({navigation,route}){
                     )
                     
                 }}/>
-                <Tab.Screen name = "registroVenta" component = {registroVenta} options = {{
+                {/* <Tab.Screen name = "registroVenta" component = {registroVenta} options = {{
                     title: "Registrar Venta",
                     tabBarActiveTintColor:'green',
                     tabBarIcon: ({focused}) => (
@@ -41,7 +41,7 @@ function Homev ({navigation,route}){
                     tabBarIcon: ({focused}) => (
                         <IoIosCash fontSize={focused?40:25} color={focused?'green':''}/>
                     )
-                }}/>
+                }}/> */}
 
             </Tab.Navigator>
         </>
