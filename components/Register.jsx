@@ -2,7 +2,7 @@ import {Text,View,TextInput,TouchableOpacity,Switch } from 'react-native'
 import {useForm,Controller} from 'react-hook-form'
 import {styles} from '../assets/style/style'
 import { useState } from 'react';
-import User from './User';
+
 
 export default function Register({navigation}){
     const {register,control,handleSubmit,formState:{errors}}=useForm({
@@ -14,10 +14,7 @@ export default function Register({navigation}){
         }
     })
     const  onSubmit = data => {
-      let fecha = new Date()
-      let user = new User(data.idvend,data.nombre,data.correo,isfourth,)
-      console.log(user)
-      user.registrar(user)
+      let user = {idvend : data.idvend ,nombre: data.nombre ,correo: data.correo ,rol: isfourth}
       navigation.navigate('Login')
       };
 

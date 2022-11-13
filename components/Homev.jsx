@@ -2,11 +2,15 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Profile from './Profile'
 import registroVenta from './registroVenta'
 import Ventas from './ventas';
-
+let userv = {}
 function Homev ({navigation,route}){
     const Tab = createBottomTabNavigator()
-
-
+    userv = {
+        nombre: route.params.nombre,
+        idvend:route.params.idvend,
+        rol:route.params.rol,
+        totalcomision:route.params.totalcomision
+    }
     return(
         <>
         <Tab.Navigator>
@@ -31,5 +35,6 @@ function Homev ({navigation,route}){
 }
 
 export{
-    Homev
+    Homev,
+    userv
 }
