@@ -4,7 +4,8 @@ import Textrows from './Textrows';
 
 export default function Vendedores ({navigation}){
     const objt = new Helpers();
-    const data = objt.getUsersv();
+    const data = []
+     async () => data = await objt.getUsersv();
 
     return(
         <FlatList

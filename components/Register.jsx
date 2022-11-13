@@ -1,10 +1,13 @@
-import {Text,View,TextInput,TouchableOpacity,Switch } from 'react-native'
+import {Text,View,TextInput,TouchableOpacity,Switch, Alert } from 'react-native'
 import {useForm,Controller} from 'react-hook-form'
 import {styles} from '../assets/style/style'
 import { useState } from 'react';
+import { Helpers } from '../helpers/Helpers';
 
 
 export default function Register({navigation}){
+  let objt = new Helpers()
+
     const {register,control,handleSubmit,formState:{errors}}=useForm({
         defaultValues:{
             idvend:'',
@@ -13,9 +16,16 @@ export default function Register({navigation}){
             rol:''
         }
     })
-    const  onSubmit = data => {
+    const  onSubmit =  (data) => {
+
       let user = {idvend : data.idvend ,nombre: data.nombre ,correo: data.correo ,rol: isfourth}
-      navigation.navigate('Login')
+      try{
+         objt.saveUser(user);
+        console.log('exito guardando');
+        navigation.navigate('Login')
+        }catch(error){
+          console.log(error.message);
+        }
       };
 
     const [isfourth, setIsfourth] = useState(false);
@@ -79,7 +89,7 @@ export default function Register({navigation}){
         control={control}
         rules={{
           required:true,
-          pattern: /^w+ ([.-]?w+)*@w+ ([.-]?w+)* (.w {2,3,4})+$/,
+          pattern: /^([da-z_.-]+)@([da-z.-]+).([a-z.]{2,6})$/,
           maxLength:50,
           minLength:15
         }}
@@ -87,7 +97,7 @@ export default function Register({navigation}){
           <TextInput
           style={[styles.inputs,{borderColor:errors.correo?.type == "required"||errors.correo?.type == "maxLength"
           ||errors.correo?.type == "minLength"||errors.correo?.type == "pattern"?'red':'green'}]}
-          placeholder="contraseña"
+          placeholder="correo"
           onChange={onChange}
           onBlur={onBlur}
           value={value}  

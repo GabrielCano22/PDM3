@@ -2,6 +2,7 @@ import {Text,View,TextInput,TouchableOpacity} from 'react-native'
 import { styles } from '../assets/style/style'
 import {useForm,Controller} from 'react-hook-form'
 import { Helpers} from '../helpers/Helpers'
+import { useEffect } from 'react'
 
 
 
@@ -10,11 +11,16 @@ export default function Login({navigation}){
         nombre:'',
         idvend:''
     })
-    
-     
-     const onSubmit= data =>{          
-        let lista = new Helpers()
-        let arr = lista.getUsers();
+
+        let lista = new Helpers();
+        lista.getUsers().then(data=>{
+            console.log('daticos',data);
+        });
+
+     const onSubmit= async (data) =>{   
+        let lista = new Helpers();         
+
+        let arr = await lista.getUsers();
          console.log(arr)
          let val = false
          let user = {}

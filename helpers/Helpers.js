@@ -8,7 +8,7 @@ export class Helpers {
     async saveUser (data) {
         try {
     
-            const response = await axios.post('localhost:3000/api/user' , 
+            const response = await axios.post(`http://${PORT}:3000/api/user` , 
             data);
     
         }catch (eroor){
@@ -16,9 +16,15 @@ export class Helpers {
         }
     };
     
-    async getUsers () {
+    async getUsers () {//then son peresosos, no les gusta usar el then.
+        //Async se usa para peticiones asincronas (que no esta dentro del tiempo de ejecucion, se puede demorar 1 hora
+        //y el usuario puede seuir interactuando con la app)
+        //ejemplo: 
+        // el await se usa para obligar al codigo, que espere hasta que se resuelva la peticion, quiere decir que el programa se bloquea
+        //esperando hasta que por fin de un resuntado.
+
         try{ 
-            const response  = await axios.get(`http://${PORT}:3000/api/users`)
+            const response  = await axios.get(`http://${PORT}:3000/api/users`)//un minuto
                     return response.data
         }catch (error){
             console.log(error.message)
@@ -45,21 +51,21 @@ export class Helpers {
     }
     async updateUser (id,data){
        try{
-        await axios.put(`localhost:3000/api/user/${id}`,data)
+        await axios.put(`http://${PORT}:3000/api/user/${id}`,data)
        }catch (error){
         console.log(error)
        }
     };
     async saveVenta (data){
         try{
-            const response = await axios.post('https://back-endpdm3.herokuapp.com/api/Venta',data)
+            const response = await axios.post(`http://${PORT}:3000/api/Venta`,data)
         }catch (error){
             console.log(error)
         }
     };
     async getVentas()  {
         try{
-            const response = await axios.get('http://back-endpdm3.herokuapp.com/api/Ventas')
+            const response = await axios.get(`http://${PORT}:3000/api/Ventas`)
             return response.data
         }catch(error){
             console.log(error)
@@ -68,7 +74,7 @@ export class Helpers {
     
     async getVentasUser(id){
         try {
-            const response = await axios.get(`http://back-endpdm3.herokuapp.com/api/Venta/${id}`)
+            const response = await axios.get(`http://${PORT}:3000/api/Venta/${id}`)
             return response.data
         }catch(error){
             console.log(error)

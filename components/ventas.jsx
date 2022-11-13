@@ -12,7 +12,8 @@ export default function ventas ({navigation,route}) {
         id = userv.idvend;
     }
     let objt = new Helpers();
-    let data = objt.getVentasUser(id);
+    let data = []
+    async () => { data = await objt.getVentasUser(id);}
 
     return(
         <FlatList
