@@ -6,6 +6,8 @@ import Login from './components/Login';
 import {Homev} from './components/Homev';
 import {Homea} from './components/Homea';
 import Register from './components/Register';
+import Vendedores from './components/Vendedores'
+import ventas from './components/ventas'
 
 
 export default function App() {
@@ -18,7 +20,9 @@ export default function App() {
         <Stack.Screen name = "Login" component = {Login} options  = {{title:'App Ventas'}}/>
         <Stack.Screen name = "Homev" component = {Homev} />
         <Stack.Screen name = "Homea" component = {Homea} />
-        <Stack.Screen name = "Register" component = {Register} />   
+        <Stack.Screen name = "Register" component = {Register} />
+        <Stack.Screen name = "Vendedores" component = {Vendedores} />
+        <Stack.Screen name = "ventas" component = {ventas} /> 
       </Stack.Navigator>
     </NavigationContainer>
   
