@@ -37,6 +37,11 @@ export class Helpers {
             console.log(error)
         }
     };
+    async getUsersV(){
+        try{
+            const response = await axios.get(`http://${PORT}:3000/api/users/${false}`)
+        }
+    }
     async updateUser (id,data){
        try{
         await axios.put(`localhost:3000/api/user/${id}`,data)

@@ -4,11 +4,10 @@ import {useForm,Controller} from 'react-hook-form'
 export default function RegistroVenta(){
     const {register,control,handleSubmit,formState:{errors}}=useForm({
         defaultValues:{
-            idvend:'',
             zona:'',
-            fecha:'',
             valorVenta:''
         }
+        
     })
 
     const zonas = [

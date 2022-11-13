@@ -34,7 +34,7 @@ export default function Register({navigation}){
         }}
         render={({field:{onChange,onBlur,value}})=>(
           <TextInput
-          style={[styles.inputs,{borderColor:errors.fullname?.type == "required"||errors.fullname?.type == "maxLength"
+          style={[styles.inputs,{borderColor:errors.idvend?.type == "required"||errors.fullname?.type == "maxLength"
           ||errors.fullname?.type == "minLength"||errors.fullname?.type == "pattern"?'red':'green'}]}
           placeholder="identificacion"
           onChange={onChange}
