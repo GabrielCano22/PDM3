@@ -3,6 +3,8 @@ import { useState } from 'react';
 import { Helpers } from "../helpers/Helpers";
 import Textrows from './Textrows';
 import { userv } from "./Homev";
+import { styleRProfile } from "../assets/style/style"
+
 
 
 export default function ventas ({navigation,route}) {
@@ -18,25 +20,29 @@ export default function ventas ({navigation,route}) {
           data={data}
           //keyExtractor={({ id }, index) => id}
           renderItem={({ item }) => (     
-                <View>
-                    <Textrows
-                    label = "fecha:"
-                    dato = {item.fecha}
-                    />
-                    <View>
+                <View style = {{border:'solid'}}>
+                    <View style={{flexDirection:"row"}}>
                         <Textrows
+                        label = "fecha:"
+                        dato = {item.fecha}
+                        />
+                         <Textrows
                             label = "Zona:"
                             dato = {item.zona}
                         />
+                    </View>
+                    
+                    <View style={{flexDirection:"row"}}>
+                       
                         <Textrows
                             label = "valor:"
                             dato = {item.ValorVenta}
                         />
-                    </View>
-                    <Textrows
+                        <Textrows
                         label = "Comision:"
                         dato = {item.comision}
-                    />
+                        />
+                    </View>
                 </View>   
           )}
         />

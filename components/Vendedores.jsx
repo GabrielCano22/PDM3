@@ -19,7 +19,7 @@ export default function Vendedores ({navigation}){
           //keyExtractor={({ id }, index) => id}
           renderItem={({ item }) => (
            <TouchableOpacity
-           style={{backgroundColor:'orange'}}
+           style={{backgroundColor:'lightgreen',border:'solid'}}
             onPress = {()=>{
               //alert(`correo ${item.email}, usuarion: ${item.username}`)
               navigation.navigate('ventasid',item)

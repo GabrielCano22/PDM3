@@ -59,8 +59,9 @@ export default function RegistroVenta(){
     }
 
     return(
-        <View>
+        <View style={styles.container}>
             <Picker
+                style={[styles.inputs,{borderColor:'green'}]}
                 selectedValue={valorZona}
                 onValueChange={(itemValue, itemIndex) => setValorZona(itemValue)}
             >
@@ -98,7 +99,7 @@ export default function RegistroVenta(){
 
             <TouchableOpacity
                 onPress={handleSubmit(registrarVenta)}
-                style={{backgroundColor:'green',alignItems:'center'}}
+                style={styles.butons}
             >
                 <Text style={{color:'white'}}>Añadir</Text>
             </TouchableOpacity>

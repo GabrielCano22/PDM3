@@ -2,6 +2,7 @@ import { FlatList,View} from "react-native";
 import { useState } from 'react';
 import { Helpers } from "../helpers/Helpers";
 import Textrows from './Textrows';
+import { styleRProfile } from "../assets/style/style"
 
 
 export default function Allventas ({navigation,route}) {
@@ -17,11 +18,17 @@ export default function Allventas ({navigation,route}) {
           //keyExtractor={({ id }, index) => id}
           renderItem={({ item }) => (     
                 <View>
-                    <Textrows
-                    label = "fecha:"
-                    dato = {item.fecha}
-                    />
-                    <View>
+                    <View style={{flexDirection:"row"}}>
+                        <Textrows
+                        label = "fecha:"
+                        dato = {item.fecha}
+                        />
+                        <Textrows
+                        label = "identificacion:"
+                        dato = {item.idvend}
+                        />
+                    </View> 
+                    <View style={{flexDirection:"row"}}>
                         <Textrows
                             label = "Zona:"
                             dato = {item.zona}
