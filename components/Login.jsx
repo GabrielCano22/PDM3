@@ -12,11 +12,6 @@ export default function Login({navigation}){
         idvend:''
     })
 
-        let lista = new Helpers();
-        lista.getUsers().then(data=>{
-            console.log('daticos',data);
-        });
-
      const onSubmit= async (data) =>{   
         let lista = new Helpers();         
 
@@ -24,9 +19,7 @@ export default function Login({navigation}){
          console.log(arr)
          let val = false
          let user = {}
-     for (let i=0;i<arr.length;i++){
-         console.log(data.nombre) 
-         console.log(data.idvend)   
+     for (let i=0;i<arr.length;i++){   
          if (arr[i].nombre == data.nombre && arr[i].idvend == data.idvend){
               val = true
               user = arr[i]

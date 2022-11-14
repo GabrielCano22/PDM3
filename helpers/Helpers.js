@@ -77,7 +77,7 @@ export class Helpers {
             const response = await axios.get(`http://${PORT}:3000/api/Venta/${id}`)
             return response.data
         }catch(error){
-            console.log(error)
+            console.log(error.message)
         }
     };
 }

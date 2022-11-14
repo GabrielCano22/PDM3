@@ -29,21 +29,21 @@ const rol = (d) => {
  };
     return(
         <>
-         <Textrows
-        label="Nombre:"
-        dato = {user.nombre}
-        />
-        <Textrows
-        label="correo:"
-        dato = {user.correo}
-        />
-        <Textrows
-        label="rol:"
-        dato = {rol(user.rol)}
-        /> 
-        {
-            comision(rol)
-        }
+            <Textrows
+            label="Nombre:"
+            dato = {user.nombre}
+            />
+            <Textrows
+            label="correo:"
+            dato = {user.correo}
+            />
+            <Textrows
+            label="rol:"
+            dato = {rol(user.rol)}
+            /> 
+            {
+                comision(user.rol)
+            }
         </>
         
     )

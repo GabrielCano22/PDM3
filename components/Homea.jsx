@@ -2,20 +2,21 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { IoIosBody,IoIosListBox,IoIosCash} from "react-icons/io";
 import Profile from './Profile';
 import Vendedores from './Vendedores';
-import Ventas from './ventas';
+import Allventas from './Allventas';
 let usera={}
-function Homea ({navigation,rout}){
+function Homea ({navigation,route}){
     const Tab = createBottomTabNavigator();
     usera = {
-        nombre:rout.params.nombre,
-        idvend:rout.params.idvend,
-        correo:rout.params.correo,
-        rol:rout.params.rol
+        nombre:route.params.nombre,
+        idvend:route.params.idvend,
+        correo:route.params.correo,
+        rol:route.params.rol
     }
     
     return(
-        <Tab.Navigator 
-            screenOption = {() => ({
+        <>
+            <Tab.Navigator 
+            screenOptions = {() => ({
                 headerShown: false
             })}>
                 <Tab.Screen name = "Profile" component = {Profile} options = {{
@@ -34,16 +35,15 @@ function Homea ({navigation,rout}){
                     )
                 }} />
 
-                <Tab.Screen name = "Ventas" component = {Ventas} options = {{
-                    title: "Ventas",
+                <Tab.Screen name = "Allventas" component = {Allventas} options = {{
+                    title: "Allventas",
                     tabBarActiveTintColor:'green',
                     tabBarIcon: ({focused}) => (
                         <IoIosCash fontSize={focused?40:25} color={focused?'green':''}/>
                     )
                 }}/>
-
-        
-        </Tab.Navigator>
+            </Tab.Navigator>
+        </>
     )
 }
 

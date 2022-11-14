@@ -28,7 +28,7 @@ function Homev ({navigation,route}){
                     )
                     
                 }}/>
-                {/* <Tab.Screen name = "registroVenta" component = {registroVenta} options = {{
+                 <Tab.Screen name = "registroVenta" component = {registroVenta} options = {{
                     title: "Registrar Venta",
                     tabBarActiveTintColor:'green',
                     tabBarIcon: ({focused}) => (
@@ -42,7 +42,7 @@ function Homev ({navigation,route}){
                     tabBarIcon: ({focused}) => (
                         <IoIosCash fontSize={focused?40:25} color={focused?'green':''}/>
                     )
-                }}/> */}
+                }}/> 
 
             </Tab.Navigator>
         </>

@@ -1,18 +1,15 @@
-import { Text,View,TextInput,FlatList,Picker } from 'react-native';
-import axios from 'axios'; // Es un consumidor de apis
+import { Text,View,TextInput,TouchableOpacity,Picker } from 'react-native';
+import { styles } from '../assets/style/style.js';
 import {useForm,Controller} from 'react-hook-form';
 import { useState } from 'react';
-import userv from './Homev.jsx'
-import {helper, Helpers} from '../helpers/Helpers.js'
+import {userv} from './Homev.jsx'
+import {Helpers} from '../helpers/Helpers.js'
 
 export default function RegistroVenta(){
     const [valorZona, setValorZona] = useState('')
 
-    const {register,control,handleSubmit,formState:{errors}}=useForm({
-        defaultValues:{
+    const {control,handleSubmit,formState:{errors}}=useForm({
             valorVenta:''
-        }
-        
     })
 
     const calcularComision = (valZona,valVenta) => {
@@ -27,11 +24,15 @@ export default function RegistroVenta(){
         else if(valZona === 'norte') {
             porcentaje = 0.02
         }
-        return comision = porcentaje * valVenta
+        comision = porcentaje * valVenta
+        return comision;
     }
 
-    const registrarVenta = () => {
+    const registrarVenta = (data) => {
         let fecha = new Date()
+        let valorVenta = data.valorVenta
+
+       if(calcularComision(valorZona,valorVenta)>0){
         const venta = {
             idvend:userv.idvend,
             zona:valorZona,
@@ -51,6 +52,10 @@ export default function RegistroVenta(){
         let ayuda = new Helpers()
         ayuda.saveVenta(venta)
         ayuda.updateUser(userv.idvend,vendedor)
+        console.log("exito en el registro!");
+       }else{
+        console.log("error");
+       }
     }
 
     return(
@@ -68,8 +73,9 @@ export default function RegistroVenta(){
                 control={control}
                 rules={{
                     required:true,
+                    pattern:/([2-9]000000+)/g,
                     maxLength:12,
-                    minLength:3
+                    minLength:7
                 }}
                 render={({field:{onChange,onBlur,value}})=>(
                     <TextInput
@@ -86,11 +92,13 @@ export default function RegistroVenta(){
            />
 
            {errors.valorVenta ?.type == 'required' && <Text style={{color:'red'}}> El campo es requerido </Text>}
+           {errors.valorVenta ?.type == 'pattern' && <Text style={{color:'red'}}> la venta debe ser entre 2 y 40 millones </Text>}
            {errors.valorVenta ?.type == 'maxLength' && <Text style={{color:'red'}}> Debe contener maximo 12 caracteres</Text>}
-           {errors.valorVenta ?.type == 'minLength' && <Text style={{color:'red'}}>Debe contener minimo 3 caracteres</Text>} 
+           {errors.valorVenta ?.type == 'minLength' && <Text style={{color:'red'}}>Debe contener minimo 7 caracteres</Text>} 
 
             <TouchableOpacity
-                onPress={()=>registrarVenta()}
+                onPress={handleSubmit(registrarVenta)}
+                style={{backgroundColor:'green',alignItems:'center'}}
             >
                 <Text style={{color:'white'}}>Añadir</Text>
             </TouchableOpacity>

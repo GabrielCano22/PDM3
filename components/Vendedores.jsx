@@ -1,13 +1,16 @@
 import { FlatList,TouchableOpacity,View } from "react-native-web";
 import { Helpers } from "../helpers/Helpers";
+import { useState } from "react";
 import Textrows from './Textrows';
 
 export default function Vendedores ({navigation}){
+    const [data,setData]= useState([])
     const objt = new Helpers();
-
-    const data = objt.getUsers();
-=======
-    const data = []
+    objt.getUsersv()
+    .then(
+        d => setData(d)
+    )
+    
      async () => data = await objt.getUsersv();
 
     return(
@@ -19,7 +22,7 @@ export default function Vendedores ({navigation}){
            style={{backgroundColor:'orange'}}
             onPress = {()=>{
               //alert(`correo ${item.email}, usuarion: ${item.username}`)
-              navigation.navigate('ventas',item.idvend)
+              navigation.navigate('ventasid',item)
               
             }
             }>

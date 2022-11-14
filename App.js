@@ -7,7 +7,7 @@ import {Homev} from './components/Homev';
 import {Homea} from './components/Homea';
 import Register from './components/Register';
 import Vendedores from './components/Vendedores'
-import ventas from './components/ventas'
+import ventasid from './components/ventasid'
 
 
 export default function App() {
@@ -22,7 +22,7 @@ export default function App() {
         <Stack.Screen name = "Homea" component = {Homea} />
         <Stack.Screen name = "Register" component = {Register} />
         <Stack.Screen name = "Vendedores" component = {Vendedores} />
-        <Stack.Screen name = "ventas" component = {ventas} /> 
+        <Stack.Screen name = "ventasid" component = {ventasid} /> 
       </Stack.Navigator>
     </NavigationContainer>
   

@@ -2,15 +2,15 @@ import { FlatList,View} from "react-native";
 import { useState } from 'react';
 import { Helpers } from "../helpers/Helpers";
 import Textrows from './Textrows';
-import { userv } from "./Homev";
 
 
-export default function ventas ({navigation,route}) {
+export default function ventasid ({navigation,route}) {
     const [data,setData]= useState([])
-    let id = userv.idvend;
+    let id = route.params.idvend;
+    console.log('id : ', id)
     let objt = new Helpers(); 
      objt.getVentasUser(id)
-     .then(d => {
+     .then(d => { 
      setData(d) 
     })
     return(
